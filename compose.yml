@@ -1,0 +1,12 @@
+services:
+  ubuntu-tools:
+    image: ghcr.io/hamidnaeemabadi/doprax-service:v0.1.0
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    environment:
+      TERM: xterm-256color
+    # Raw sockets support mtr, nmap, and iftop without privileged mode.
+    # Doprax must permit this capability for those features to work.
+    cap_add:
+      - NET_RAW
